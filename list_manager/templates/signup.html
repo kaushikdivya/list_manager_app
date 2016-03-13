@@ -1,0 +1,18 @@
+{% extends "layout.html" %}
+{% block content %}
+    <h2>Welcome to List manager</h2>
+
+    <form class = "form-inline" action = "{{url_for('signup')}}" method = "post" name = "signup">
+        {{ form.hidden_tag() }}
+
+
+        {{ form.name(class_="form-control", placeholder="Username") }}
+
+        {{ form.email(class_="form-control", placeholder="Email") }}
+
+        {{ form.password(class_="form-control", placeholder="Password") }}
+
+        {{ form.submit(class_="btn btn-primary") }}
+
+    </form>
+{% endblock %}

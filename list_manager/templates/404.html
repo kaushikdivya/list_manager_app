@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>List App</title>
+        <meta name = "viewport" content = "width=device-width", initial-scale = 1">
+        <link href = "{{ url_for ('static', filename='css/bootstrap.min.css')}}" rel="stylesheet">
+        <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico')}}"
+        <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+        <script type="text/javascript" src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+
+    </head>
+
+    <body>
+        <div class = "container-fluid text-center" style="margin-top: 50px">
+            <h4 align=center class="text-danger">Page not found on this website.Try this link <a href={{url_for('home')}}>Home</a></h4>
+            <iframe src="//giphy.com/embed/xQZqtVJF0JeU" width="480" height="270" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="http://giphy.com/gifs/retro-fiend-horror-retrofiend-xQZqtVJF0JeU">via GIPHY</a></p>
+        </div>

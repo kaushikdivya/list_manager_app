@@ -1,0 +1,3 @@
+TMP_DATA_DIR = '/tmp'
+SESSION_COOKIE_NAME = 'HoneyIRemeberCookie'
+SECRET_KEY = '447d2caab9557a32a04755caa95656e1'

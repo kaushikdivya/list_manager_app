@@ -1,0 +1,44 @@
+{% extends "profilelayout.html" %}
+{% block content %}
+
+    <div class = "container-fluid" align="center">
+
+        <div><h3>Hi {{user_info['name']}}, Welcome to Life Organizer</h3>
+        </div>
+        <div class="container">
+        	<div class="row">
+                <div class="control-group" id="fields">
+                    <div class="controls">
+                        <form action="{{url_for('new_list')}}" role="form" autocomplete="off" method="post">
+                            <div class="entry input-group col-xs-3">
+                                <input class="form-control" name="list_name" type="text" placeholder="Add new list" />
+                            	<span class="input-group-btn">
+                                    <button class="btn btn-success btn-add" type="submit">
+                                        <span class="glyphicon glyphicon-plus"></span>
+                                    </button>
+
+                                </span>
+
+                            </div>
+                        </form>
+                    </div>
+                </div>
+        	</div>
+        </div>
+
+        <div class = "user_lists">
+
+            {% for list in lists %}
+
+
+                        <a href="{{ url_for('lists', list_id=list['id']) }}">
+                            <h4>{{ list['name'] }}</h4>
+                        </a>
+
+            {% endfor %}
+
+        </div>
+
+    </div>
+
+{% endblock %}

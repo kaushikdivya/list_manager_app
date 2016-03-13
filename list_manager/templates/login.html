@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+{% block content %}
+    <div class = "container-fluid" align="center">
+    <div class="jumbotron text-center" style="width:500px" >
+
+    <form class = "form-inline text-center" action="{{url_for('login')}}" method = "post" style="text-align:center">
+        {{ form.hidden_tag() }}
+
+        <div class="left-inner-addon">
+        <i class = "glyphicon glyphicon-envelope"></i>
+        {{ form.email(class_="form-control", placeholder="Email", style="width:300px; padding-left: 40px;") }}
+        </div>
+        <br><br>
+
+        <div class="left-inner-addon">
+        <i class= "glyphicon glyphicon-lock"></i>
+        {{ form.password(class_="form-control", placeholder="Password", style="width:300px; padding-left: 40px") }}
+        </div>
+        <br><br>
+
+        {{ form.submit(class_="btn btn-primary", style="width:300px") }}
+
+    </form>
+    <a href="/" style="text-align:center"><h4>Forgot Password</h4></a>
+</div>
+</div>
+
+
+{% endblock %}

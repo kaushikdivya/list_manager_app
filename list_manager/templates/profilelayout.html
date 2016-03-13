@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>List App</title>
+        <meta name = "viewport" content = "width=device-width", initial-scale = 1">
+        <link href = "{{ url_for ('static', filename='css/bootstrap.min.css')}}" rel="stylesheet">
+        <link href = "{{ url_for ('static', filename='css/custom.css')}}" rel="stylesheet">
+        <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico')}}"
+        <script src="//code.jquery.com/jquery-2.1.1.min.js"></script>
+        <script type="text/javascript" src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+        <style>
+            input[type=checkbox][disabled] + label {
+                color: #ccc;
+            }
+        </style>
+
+    </head>
+
+    <header>
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="/users">
+                    <img alt="Brand" src="{{url_for ('static', filename = 'images/checklist.jpg')}}" style = "max-width:90px; margin-top:40px ">
+
+                    </a>
+                </div>
+            </div>
+        </nav>
+        <div class = "container-fluid">
+            <a href="/users"> <h1 class = "logo" style="margin-left: 120px ">List Manager</h1></a>
+        </div>
+        <ul class="nav navbar-nav navbar-right">
+            <a href="/support" class= "glyphicon glyphicon-heart">Support&nbsp;&nbsp</a>
+            <a role="presentation" href="/logout"><span class="glyphicon glyphicon-off"></span> Logout&nbsp;&nbsp&nbsp;&nbsp&nbsp;&nbsp</a>
+
+        </ul>
+    </header>
+
+    <body>
+
+
+    <hr>
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+            <div class = "container-fluid" align="center">
+                <div class = "alert alert-danger" style="width:300px">
+                    {{ message }}
+                </div>
+            </div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+    {% block content %}
+    {% endblock %}
+    </body>
+
+
+</html>

@@ -1,0 +1,62 @@
+{% extends "profilelayout.html" %}
+{% block content %}
+
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+
+<div class="container-fluid text-center">
+    <h3>Here is the list {{ list_info[0]['name'] }}</h3>
+    <dl>
+        <dt> {{list_info[0]['name']}}</dt>
+	<div class="row">
+        <div class="control-group" id="fields">
+            <div class="controls">
+                <form name= "input_form" role="form"  class="form-inline" autocomplete="off" action="{{url_for('lists', list_id = request.path.split('/')[2])}}" method="post">
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-success update-list-button">Update list</button>
+                    </div>
+                    <div class="form-group">
+                        <button type="button" class="btn btn-success add-new-item-button">New item</button>
+                    </div>
+                    <br><br>
+                    <div class="items-list">
+                    {% for item in list_info[0]['items']%}
+                        <div class="row">
+                            <div class="list-item">
+                                <div class="form-group">
+                                    <!--<span class="input-group-addon">-->
+                                    <div class="radio" item_id="{{item['id']}}">
+                                        {% if item['status'] == 'incomplete' %}
+                                            <input class="check" type="checkbox" name="check">
+                                            <input type="hidden" name="item_id" value="{{ item['id']}}">
+                                            <input type="hidden" name="status" value="{{ item['status']}}">
+                                            <input type="text" name="fields" class="form-control check_label" value="{{item['name']}}">
+                                            <input type="text" name="quantity" class="form-control check_label" value="{{item['quantity']}}">
+                                        {% else %}
+                                            <input class="check" type="checkbox" name="check" checked>
+                                            <input type="hidden" name="item_id" value="{{ item['id']}}">
+                                            <input type="hidden" name="status" value="{{ item['status']}}">
+                                            <input type="text" name="fields" class="form-control check_label" style = "text-decoration:line-through" value= "{{item['name']}}" disabled="disabled">
+                                            <input type="text" name="quantity" class="form-control check_label" style = "text-decoration:line-through" value="{{item['quantity']}}" disabled="disabled">
+                                        {% endif %}
+                                        <button type="button" class="btn btn-default trash_btn" name="trash_btn">
+                                            <span class="glyphicon glyphicon-trash"></span>
+                                        </button>
+                                    </div>
+                                    <br>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor%}
+                </div>
+                </form>
+            </div>
+        </div>
+	</div>
+</dl>
+</div>
+
+<script type="text/javascript" src="{{ url_for('static', filename='js/add_items_to_list.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/items.js') }}"></script>
+
+{% endblock %}

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>List App</title>
+        <meta name = "viewport" content = "width=device-width", initial-scale = 1">
+        <link href = "{{ url_for ('static', filename='css/bootstrap.min.css')}}" rel="stylesheet">
+        <link href = "{{ url_for ('static', filename='css/main.css')}}" rel="stylesheet">
+        <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico')}}"
+
+
+    </head>
+
+        <header>
+            <nav class="navbar navbar-default">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <a class="navbar-brand" href="/home">
+                        <img alt="Brand" src="{{url_for ('static', filename = 'images/checklist.jpg')}}" style = "max-width:90px; margin-top:40px ">
+
+                        </a>
+                    </div>
+                </div>
+            </nav>
+            <div class = "container-fluid">
+                <a href="/home"> <h1 class = "logo" style="margin-left: 120px ">List Manager</h1></a>
+            </div>
+            <ul class="nav navbar-nav navbar-right">
+                <a href="/support" class= "glyphicon glyphicon-heart">Support&nbsp;&nbsp</a>
+                <a role="presentation" href="/login"><span class="glyphicon glyphicon-log-in"></span> Login&nbsp;&nbsp&nbsp;&nbsp</a>
+
+
+
+                <a role="presentation" class="active" href="/signup"><span class="glyphicon glyphicon-pencil"></span>    Sign up&nbsp;&nbsp&nbsp;&nbsp&nbsp;&nbsp</a><h5>
+
+
+        </ul>
+    </div>
+
+</header>
+
+<body>
+
+
+<hr>
+{% with messages = get_flashed_messages() %}
+    {% if messages %}
+
+        {% for message in messages %}
+            <div class = "container-fluid">
+                <div class = "alert alert-danger" style="width:500px">
+                    {{ message }}
+                </div>
+            </div>
+        {% endfor %}
+
+    {% endif %}
+{% endwith %}
+{% block content %}
+{% endblock %}
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+</body>
+
+</html>
